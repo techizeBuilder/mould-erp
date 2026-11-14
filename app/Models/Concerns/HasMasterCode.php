@@ -65,6 +65,6 @@ trait HasMasterCode
 
     public function imageUrl(): ?string
     {
-        return ($this->image_path ?? null) ? Storage::disk('public')->url($this->image_path) : null;
+        return ($this->image_path ?? null) ? asset('storage/'.ltrim(str_replace('\\', '/', $this->image_path), '/')) : null;
     }
 }
