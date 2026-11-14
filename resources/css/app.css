@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Source Sans 3', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+
+    /* Classic navy / steel-blue palette */
+    --color-navy-950: #0f1a2b;
+    --color-navy-900: #16233a;
+    --color-navy-800: #1e2f4b;
+    --color-navy-700: #2a3f61;
+    --color-navy-300: #9fb0c9;
+    --color-navy-200: #c7d2e2;
+
+    --color-brand-50: #eef4fb;
+    --color-brand-100: #d9e6f5;
+    --color-brand-500: #2f6db5;
+    --color-brand-600: #245a9a;
+    --color-brand-700: #1d4a80;
+
+    --color-gold-500: #c9a227;
+    --color-page: #f3f5f8;
+}
+
+@layer components {
+    .card { @apply rounded-md border border-slate-200 bg-white shadow-sm; }
+    .card-header { @apply flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-3.5; }
+    .card-title { @apply text-[15px] font-semibold text-slate-800; }
+
+    .form-label { @apply mb-1.5 block text-sm font-semibold text-slate-700; }
+    .form-input { @apply block w-full rounded border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 focus:outline-none; }
+    .form-error { @apply mt-1 text-xs font-medium text-red-600; }
+
+    .btn { @apply inline-flex items-center justify-center gap-2 rounded px-4 py-2 text-sm font-semibold transition focus:ring-2 focus:ring-offset-1 focus:outline-none disabled:opacity-60; }
+    /* Use together with .btn, e.g. class="btn btn-primary" */
+    .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500; }
+    .btn-secondary { @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:ring-slate-300; }
+    .btn-danger { @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500; }
+    .btn-sm { @apply px-2.5 py-1.5 text-xs; }
+
+    .badge { @apply inline-flex items-center rounded px-2 py-0.5 text-xs font-semibold; }
+
+    .table-classic { @apply w-full text-left text-sm; }
+    .table-classic thead th { @apply border-b border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold tracking-wide text-slate-600 uppercase; }
+    .table-classic tbody td { @apply border-b border-slate-100 px-4 py-3 text-slate-700; }
+    .table-classic tbody tr:hover { @apply bg-brand-50/40; }
+}
+
+/* Printing an admin page (e.g. the muster roll): just the content, full width. */
+@media print {
+    #sidebar, #sidebar-backdrop, body > div > div > header { display: none !important; }
+    body > div > div { padding-left: 0 !important; }
+    body { background: #fff; }
+    .card { box-shadow: none; border: 0; }
+}
